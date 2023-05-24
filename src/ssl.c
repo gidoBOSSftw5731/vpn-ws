@@ -318,7 +318,7 @@ void *vpn_ws_ssl_handshake(vpn_ws_peer *peer, char *sni, char *key, char *crt) {
         return ssl;
 
 error:
-	err = ERR_get_error_line_data(NULL, NULL, NULL, NULL);
+	err = ERR_get_error();
 	vpn_ws_warning("vpn_ws_ssl_handshake(): %s", ERR_error_string(err, NULL));
 	ERR_clear_error();
 	SSL_free(ssl);
